@@ -32,42 +32,27 @@ body{font-family:'Lato',sans-serif;background:var(--ivory);color:#222;overflow-x
 img{max-width:100%;display:block}
 
 /* ═══════════════════════════════════════════
-   LOADING SCREEN
+   SCROLL ENTRANCE
 ═══════════════════════════════════════════ */
-#loading{
-  position:fixed;inset:0;z-index:9999;
-  background:radial-gradient(ellipse at 50% 40%,#0D1B4B 0%,#060C22 70%,#020510 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  overflow:hidden;transition:opacity 1.2s ease;
-}
-#loading.out{opacity:0;pointer-events:none}
-#star-c{position:absolute;inset:0;pointer-events:none}
-.ls-rangoli{width:min(260px,68vw);height:min(260px,68vw);margin-bottom:10px;position:relative;z-index:2}
-#rsvg{width:100%;height:100%;filter:drop-shadow(0 0 12px rgba(212,175,55,.5))}
-.ls-pair{display:flex;align-items:flex-end;justify-content:center;position:relative;z-index:3;margin:-15px 0 0}
-.ls-img{width:min(100px,24vw);height:min(148px,36vw);object-fit:contain;object-position:bottom;filter:drop-shadow(0 0 14px rgba(212,175,55,.35))}
-.ls-bride{transform:translateX(80px);opacity:0;animation:brideIn 1s cubic-bezier(.2,1.4,.4,1) 1.6s forwards}
-.ls-groom{transform:translateX(-80px);opacity:0;animation:groomIn 1s cubic-bezier(.2,1.4,.4,1) 1.8s forwards}
-@keyframes brideIn{to{transform:translateX(6px);opacity:1}}
-@keyframes groomIn{to{transform:translateX(-6px);opacity:1}}
-.ls-diya{font-size:1.7rem;align-self:flex-end;margin-bottom:6px;opacity:0;animation:dIn .5s ease 2.7s forwards,dPulse 1.5s ease-in-out 3.3s infinite}
-@keyframes dIn{to{opacity:1}}
-@keyframes dPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8) drop-shadow(0 0 10px orange)}}
-.ls-title{font-family:'Noto Sans Telugu',serif;font-size:clamp(1rem,3.8vw,1.6rem);color:var(--gold);text-align:center;opacity:0;animation:fadeUp .8s ease 2.5s forwards;text-shadow:0 0 24px rgba(212,175,55,.5);margin-top:12px;position:relative;z-index:2}
-.ls-names{font-family:'Cinzel Decorative',serif;font-size:clamp(.75rem,2.3vw,1rem);color:rgba(255,255,255,.8);letter-spacing:3px;text-align:center;opacity:0;animation:fadeUp .7s ease 2.9s forwards;position:relative;z-index:2;margin-top:5px}
-.ls-skip{position:absolute;bottom:22px;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:rgba(212,175,55,.45);opacity:0;animation:fadeIn .5s ease 3.5s forwards}
-.ls-om-en{font-family:'Cinzel Decorative',serif;font-size:clamp(.62rem,1.8vw,.78rem);color:rgba(212,175,55,.65);letter-spacing:3px;text-align:center;opacity:0;animation:fadeUp .7s ease 2.7s forwards;position:relative;z-index:2;margin-top:3px}
+@keyframes scrollDrop{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{to{opacity:1}}
+.scroll-enter-anim{animation:scrollDrop .85s cubic-bezier(.2,1.3,.5,1) forwards}
 
 /* ═══════════════════════════════════════════
    PAPYRUS SCROLL OPENING
 ═══════════════════════════════════════════ */
+/* Lotus sparkles */
+.lspark{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:20;animation:sparkBurst .9s ease forwards}
+@keyframes sparkBurst{0%{opacity:1;transform:translate(0,0) scale(1.3)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+.bloomed .lotus-center{animation:bloomGlow .7s ease forwards}
+@keyframes bloomGlow{0%{box-shadow:0 0 0 5px rgba(212,175,55,.2),0 0 22px rgba(212,175,55,.35)}50%{box-shadow:0 0 0 44px rgba(212,175,55,0),0 0 90px rgba(212,175,55,.75)}100%{box-shadow:0 0 0 5px rgba(212,175,55,.15),0 0 22px rgba(212,175,55,.3)}}
+
 #scroll-screen{
   position:fixed;inset:0;z-index:9000;
   background:radial-gradient(ellipse at 50% 45%,#0D1B4B 0%,#060C22 75%,#020510 100%);
-  display:none;flex-direction:column;align-items:center;justify-content:center;
-  overflow:hidden;transition:opacity 1s ease;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;transition:opacity 1s ease;opacity:0;
 }
 #scroll-screen.out{opacity:0;pointer-events:none}
 .sc-hint{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(212,175,55,.6);margin-bottom:14px;animation:tapPulse 2s ease infinite}
@@ -385,39 +370,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
 </style>
 </head>
 <body>
-
-<!-- LOADING -->
-<div id="loading">
-  <canvas id="star-c"></canvas>
-  <div class="ls-rangoli">
-    <svg id="rsvg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="200" cy="200" r="158" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="993" stroke-dashoffset="993"/>
-      <circle cx="200" cy="200" r="118" stroke="#D4AF37" stroke-width="1" stroke-dasharray="741" stroke-dashoffset="741" opacity=".65"/>
-      <circle cx="200" cy="200" r="68" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="427" stroke-dashoffset="427"/>
-      <circle cx="200" cy="200" r="28" stroke="#7CA4D4" stroke-width="1" stroke-dasharray="176" stroke-dashoffset="176"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(45 200 200)"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(90 200 200)"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(135 200 200)"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(180 200 200)"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(225 200 200)"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(270 200 200)"/>
-      <path d="M200 42Q242 122 200 200Q158 122 200 42Z" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="350" stroke-dashoffset="350" transform="rotate(315 200 200)"/>
-      <path d="M200 132L218 200L200 268L182 200Z" stroke="#7CA4D4" stroke-width="1" stroke-dasharray="280" stroke-dashoffset="280"/>
-      <path d="M132 200L200 218L268 200L200 182Z" stroke="#7CA4D4" stroke-width="1" stroke-dasharray="280" stroke-dashoffset="280"/>
-      <circle cx="200" cy="200" r="7" fill="#D4AF37" opacity="0" id="r-dot"/>
-    </svg>
-  </div>
-  <div class="ls-pair">
-    <img class="ls-img ls-bride" src="bride.png" alt="Shanmukhi">
-    <div class="ls-diya">🪔</div>
-    <img class="ls-img ls-groom" src="Groom.png" alt="Pavan">
-  </div>
-  <p class="ls-title">ఓం నమో వేంకటేశాయ</p>
-  <p class="ls-om-en">Om Namo Venkatasya</p>
-  <p class="ls-names">Shanmukhi <span style="color:var(--sky)">♥</span> Pavan</p>
-  <span class="ls-skip">tap anywhere to enter</span>
-</div>
 
 <!-- PAPYRUS SCROLL -->
 <div id="scroll-screen">
@@ -752,28 +704,20 @@ function initStars(id,n){
 }
 
 /* ── loading ── */
-function initLoading(){
-  const ls=$('loading');
-  initStars('star-c',160);
-  if(window.gsap){
-    const els=qq('#rsvg path,#rsvg circle:not(#r-dot)',ls);
-    gsap.to(els,{strokeDashoffset:0,duration:2.2,stagger:.12,ease:'power2.inOut',delay:.3});
-    gsap.to('#r-dot',{opacity:1,duration:.4,delay:2.7});
-  }
-  let done=false;
-  function dismiss(){if(done)return;done=true;ls.classList.add('out');setTimeout(()=>{ls.style.display='none';showScroll()},1300)}
-  setTimeout(()=>ls.addEventListener('click',dismiss,{once:true}),900);
-  setTimeout(dismiss,5200);
-}
-
 /* ── papyrus scroll ── */
 function showScroll(){
   const ss=$('scroll-screen');
-  ss.style.display='flex';
   initStars('sc-stars',80);
+  // fade in + drop entrance
+  setTimeout(()=>{ss.style.opacity='1'},30);
   const wrap=$('scroll-wrap'),paper=$('scroll-paper'),bot=$('bot-roller'),
         tWrap=$('thread-wrap'),tLine=$('thread-line'),enterBtn=$('scroll-enter');
-  const FULL=400;
+  wrap.classList.add('scroll-enter-anim');
+  // start music on first scroll interaction
+  wrap.addEventListener('touchstart',()=>{
+    if(MUSIC&&!musicStarted){const a=$('bg-audio');a.src=MUSIC;a.play().then(()=>{musicOn=true;musicStarted=true;$('micon').textContent='🎵';$('mlbl').textContent='music';$('music-fab').classList.add('playing')}).catch(()=>{})}
+  },{once:true,passive:true});
+  const FULL=Math.min(400,Math.floor(window.innerHeight*.58));
   let startY=0,drag=false,prog=0,done=false;
 
   function setProg(p){
@@ -792,7 +736,7 @@ function showScroll(){
   }
   function onEnd(){
     if(!drag||done)return;drag=false;
-    if(prog>=.72){complete()}
+    if(prog>=.55){complete()}
     else{
       const sp=prog,t0=performance.now();
       function spring(now){const t=Math.min(1,(now-t0)/480);const e=1-Math.pow(1-t,3);setProg(sp*(1-e));if(t<1)requestAnimationFrame(spring)}
@@ -878,6 +822,21 @@ function initCurtainReveal(){
     if(bloomed)return;bloomed=true;
     wrap.classList.add('bloomed');
     if(hint)hint.style.opacity='0';
+    // sparkle burst
+    const stage=$('lotus-stage')||wrap;
+    const rect=($('lotus-center')||wrap).getBoundingClientRect();
+    const sr=stage.getBoundingClientRect();
+    const cx=rect.left-sr.left+rect.width/2;
+    const cy=rect.top-sr.top+rect.height/2;
+    for(let i=0;i<18;i++){
+      const sp=document.createElement('div');
+      sp.className='lspark';
+      const ang=(i/18)*Math.PI*2;
+      const dist=50+Math.random()*45;
+      sp.style.cssText=`left:${cx}px;top:${cy}px;--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;animation-delay:${Math.random()*0.12}s;background:${Math.random()>.5?'#D4AF37':'#F0D47A'}`;
+      stage.appendChild(sp);
+      setTimeout(()=>sp.remove(),1100);
+    }
     setTimeout(()=>{
       if(hint)hint.style.display='none';
       if(info)info.classList.add('revealed');
@@ -1041,10 +1000,11 @@ function initMusic(){
   function update(){$('micon').textContent=musicOn?'🎵':'🔇';$('mlbl').textContent=musicOn?'music':'muted';fab.classList.toggle('playing',musicOn)}
   fab.addEventListener('click',toggle);
   fab.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
-  document.addEventListener('click',()=>{if(!musicStarted)toggle()},{once:true,passive:true});
+  // music also starts on any user click fallback (if scroll touchstart missed)
+  document.addEventListener('click',()=>{if(MUSIC&&!musicStarted)toggle()},{once:true,passive:true});
 }
 
-window.addEventListener('DOMContentLoaded',initLoading);
+window.addEventListener('DOMContentLoaded',()=>{showScroll();});
 })();
 </script>
 </body>
