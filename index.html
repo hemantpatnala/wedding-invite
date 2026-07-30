@@ -117,7 +117,7 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
    HERO
 ═══════════════════════════════════════════ */
 #hero{min-height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:80px 20px 60px}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center top;background-image:url('Couplepics/KCP01263 copy.jpg')}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 52%;background-image:url('Couplepics/KCP01263 copy.jpg')}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,22,40,.82) 0%,rgba(6,12,34,.85) 55%,rgba(4,8,22,.9) 100%)}
 #hero-petals{position:absolute;inset:0;pointer-events:none;z-index:1}
 .temple-sil{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:110%;max-width:1400px;opacity:.08;pointer-events:none;z-index:1}
@@ -182,27 +182,18 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
 #date-reveal .tel-sub{color:var(--sky)}
 .dr-sub{font-family:'Dancing Script',cursive;font-size:.95rem;color:rgba(212,175,55,.65);margin-top:5px}
 .lotus-stage{display:flex;flex-direction:column;align-items:center;max-width:480px;margin:0 auto}
-.lotus-wrap{position:relative;width:min(268px,70vw);height:min(268px,70vw);cursor:pointer;margin:0 auto;flex-shrink:0;transition:transform .15s}
-.lotus-wrap:active{transform:scale(.96)}
-/* Petal base: transform-origin at bottom = lotus center */
-.petal{position:absolute;top:calc(50% - 105px);left:calc(50% - 27px);width:54px;height:105px;border-radius:50% 50% 42% 42%/55% 55% 45% 45%;transform-origin:50% 100%;transition:transform .65s cubic-bezier(.34,1.3,.64,1);will-change:transform}
-.op{background:linear-gradient(165deg,#FFD6E8 0%,#FF8FAB 55%,#C2527F 100%);filter:drop-shadow(0 3px 8px rgba(194,82,127,.18))}
-.ip{width:38px;height:72px;top:calc(50% - 72px);left:calc(50% - 19px);background:linear-gradient(165deg,#FFF5F9 0%,#FFCCE0 55%,#FFD07A 100%);z-index:2}
-/* Closed bud */
-.p1{transform:rotate(0deg) scaleY(.06)}.p2{transform:rotate(45deg) scaleY(.06)}.p3{transform:rotate(90deg) scaleY(.06)}.p4{transform:rotate(135deg) scaleY(.06)}.p5{transform:rotate(180deg) scaleY(.06)}.p6{transform:rotate(225deg) scaleY(.06)}.p7{transform:rotate(270deg) scaleY(.06)}.p8{transform:rotate(315deg) scaleY(.06)}
-.ip1{transform:rotate(22.5deg) scaleY(.05)}.ip2{transform:rotate(112.5deg) scaleY(.05)}.ip3{transform:rotate(202.5deg) scaleY(.05)}.ip4{transform:rotate(292.5deg) scaleY(.05)}
-/* Bloomed — petals fan out with stagger */
-.bloomed .p1{transform:rotate(0deg) scaleY(1);transition-delay:.00s}.bloomed .p2{transform:rotate(45deg) scaleY(1);transition-delay:.06s}.bloomed .p3{transform:rotate(90deg) scaleY(1);transition-delay:.12s}.bloomed .p4{transform:rotate(135deg) scaleY(1);transition-delay:.18s}.bloomed .p5{transform:rotate(180deg) scaleY(1);transition-delay:.24s}.bloomed .p6{transform:rotate(225deg) scaleY(1);transition-delay:.30s}.bloomed .p7{transform:rotate(270deg) scaleY(1);transition-delay:.36s}.bloomed .p8{transform:rotate(315deg) scaleY(1);transition-delay:.42s}
-.bloomed .ip1{transform:rotate(22.5deg) scaleY(1);transition-delay:.34s}.bloomed .ip2{transform:rotate(112.5deg) scaleY(1);transition-delay:.40s}.bloomed .ip3{transform:rotate(202.5deg) scaleY(1);transition-delay:.46s}.bloomed .ip4{transform:rotate(292.5deg) scaleY(1);transition-delay:.52s}
-/* Golden center disc */
-.lotus-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;z-index:10;background:radial-gradient(circle at 40% 34%,#FFF9E0,#D4AF37 68%,#B8922A);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(212,175,55,.2),0 0 22px rgba(212,175,55,.35)}
-.lotus-wrap:not(.bloomed) .lotus-center{animation:budPulse 2.4s ease-in-out infinite}
-@keyframes budPulse{0%,100%{box-shadow:0 0 0 5px rgba(212,175,55,.12),0 0 12px rgba(212,175,55,.18)}50%{box-shadow:0 0 0 16px rgba(212,175,55,.22),0 0 36px rgba(212,175,55,.5)}}
-.lc-om{font-family:serif;font-size:2rem;color:var(--navy);line-height:1;text-shadow:0 1px 3px rgba(0,0,0,.12)}
-.lotus-hint{margin-top:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px;transition:opacity .5s ease}
-.lh-icon{font-size:1.7rem;display:block;animation:hb 1.8s ease-in-out infinite}
-.lh-text{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(212,175,55,.65)}
-.lh-tel{font-family:'Noto Sans Telugu',serif;font-size:.78rem;color:rgba(212,175,55,.45)}
+/* Diya reveal */
+.diya-stage{display:flex;flex-direction:column;align-items:center;max-width:480px;margin:0 auto}
+.diya-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;cursor:pointer;position:relative;padding:20px}
+.diya-emoji-wrap{position:relative;width:130px;height:130px;display:flex;align-items:center;justify-content:center}
+.diya-emoji{font-size:5.5rem;display:block;filter:brightness(.55) saturate(.35) grayscale(.2);transition:filter .9s ease,transform .6s cubic-bezier(.2,1.3,.5,1)}
+.diya-glow{position:absolute;inset:-20px;border-radius:50%;background:transparent;box-shadow:0 0 0 0 rgba(255,165,0,0);transition:box-shadow 1.4s ease;pointer-events:none}
+.lit .diya-emoji{filter:brightness(1.35) saturate(2) drop-shadow(0 0 18px #FF8C00) drop-shadow(0 0 40px #FFD700) drop-shadow(0 -12px 28px rgba(255,165,0,.85));transform:scale(1.18);animation:flamePulse 2.2s ease-in-out infinite}
+.lit .diya-glow{box-shadow:0 0 35px 18px rgba(212,175,55,.22),0 0 90px 45px rgba(255,140,0,.12),0 0 140px 70px rgba(255,200,0,.06)}
+@keyframes flamePulse{0%,100%{filter:brightness(1.35) saturate(2) drop-shadow(0 0 18px #FF8C00) drop-shadow(0 0 40px #FFD700)}50%{filter:brightness(1.55) saturate(2.2) drop-shadow(0 0 30px #FF8C00) drop-shadow(0 0 65px #FFD700) drop-shadow(0 -14px 35px rgba(255,165,0,.95))}}
+.diya-hint{display:flex;flex-direction:column;align-items:center;gap:4px;transition:opacity .5s ease}
+.dh-label{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(212,175,55,.65);animation:tapPulse 2s ease infinite}
+.dh-tel{font-family:'Noto Sans Telugu',serif;font-size:.82rem;color:rgba(212,175,55,.45)}
 /* Date text fades up after bloom */
 .date-info-wrap{max-width:480px;margin:32px auto 0;text-align:center;opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease;pointer-events:none}
 .date-info-wrap.revealed{opacity:1;transform:translateY(0);pointer-events:auto}
@@ -222,6 +213,25 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
 .cd-val{font-family:'Cinzel Decorative',serif;font-size:clamp(1.8rem,5.5vw,2.7rem);color:var(--gold);display:block;line-height:1;text-shadow:0 0 18px rgba(212,175,55,.45)}
 .cd-lbl{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:5px;display:block}
 .cd-sep{font-size:2rem;color:var(--gold);padding-bottom:10px}
+
+/* ═══════════════════════════════════════════
+   EVENTS TIMELINE
+═══════════════════════════════════════════ */
+#events{background:linear-gradient(160deg,#0a1628 0%,#060C22 55%,#0a1628 100%);color:#fff;text-align:center}
+#events .section-title h2{color:var(--gold)}
+#events .tel-sub{color:var(--sky)}
+.events-timeline{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;max-width:900px;margin:0 auto}
+.ev-card{display:flex;align-items:flex-start;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.28);border-radius:16px;padding:20px 22px;min-width:250px;max-width:410px;flex:1;backdrop-filter:blur(8px);transition:all .3s;text-align:left}
+.ev-card:hover{background:rgba(212,175,55,.07);border-color:var(--gold);transform:translateY(-4px)}
+.ev-badge{background:linear-gradient(135deg,var(--royal),var(--mid));border-radius:12px;padding:12px 14px;text-align:center;flex-shrink:0;min-width:54px;border:1px solid rgba(212,175,55,.3)}
+.ev-badge-wed{background:linear-gradient(135deg,#6B0000,#A01020);border-color:rgba(212,175,55,.5)}
+.ev-day{display:block;font-family:'Cinzel Decorative',serif;font-size:1.45rem;color:var(--gold);line-height:1}
+.ev-mon{display:block;font-size:.6rem;letter-spacing:2px;color:rgba(255,255,255,.6);margin-top:4px;text-transform:uppercase}
+.ev-icon{font-size:1.7rem;margin-bottom:5px}
+.ev-name{font-family:'Cinzel Decorative',serif;font-size:.82rem;color:#fff;margin-bottom:2px;line-height:1.35}
+.ev-name-tel{font-family:'Noto Sans Telugu',serif;font-size:.78rem;color:var(--sky);margin-bottom:7px}
+.ev-time{font-family:'Playfair Display',serif;font-size:.92rem;color:var(--gold);font-weight:600;margin-bottom:5px}
+.ev-dress{font-size:.76rem;color:rgba(255,255,255,.55);font-style:italic}
 
 /* ═══════════════════════════════════════════
    CEREMONY
@@ -485,19 +495,18 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
     <h2>The Sacred Moment</h2>
     <p class="tel-sub">శుభ ముహూర్తం</p>
     <div class="gold-line"></div>
-    <p class="dr-sub">Tap the lotus to reveal the auspicious moment</p>
+    <p class="dr-sub">Tap the diya to light it &amp; reveal the sacred moment</p>
   </div>
-  <div class="lotus-stage reveal" id="lotus-stage" style="transition-delay:.1s">
-    <div class="lotus-wrap" id="lotus-wrap">
-      <div class="petal op p1"></div><div class="petal op p2"></div><div class="petal op p3"></div><div class="petal op p4"></div>
-      <div class="petal op p5"></div><div class="petal op p6"></div><div class="petal op p7"></div><div class="petal op p8"></div>
-      <div class="petal ip ip1"></div><div class="petal ip ip2"></div><div class="petal ip ip3"></div><div class="petal ip ip4"></div>
-      <div class="lotus-center" id="lotus-center"><span class="lc-om">ओं</span></div>
-    </div>
-    <div class="lotus-hint" id="lotus-hint">
-      <span class="lh-icon">🪷</span>
-      <span class="lh-text">Tap the lotus to reveal</span>
-      <span class="lh-tel">తాకండి · Tap to bloom</span>
+  <div class="diya-stage reveal" style="transition-delay:.1s">
+    <div class="diya-wrap" id="diya-wrap">
+      <div class="diya-emoji-wrap">
+        <div class="diya-glow"></div>
+        <span class="diya-emoji">🪔</span>
+      </div>
+      <div class="diya-hint" id="diya-hint">
+        <span class="dh-label">↓ tap to light the diya ↓</span>
+        <span class="dh-tel">తాకండి · Light to reveal</span>
+      </div>
     </div>
   </div>
   <div class="date-info-wrap" id="date-info-wrap">
@@ -554,10 +563,53 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
 <!-- CEREMONY -->
 <section id="ceremony" class="section">
   <div class="section-title reveal">
-    <h2>Wedding Ceremony</h2>
-    <p class="tel-sub">వివాహ వేడుక</p>
+    <h2>Wedding Celebrations</h2>
+    <p class="tel-sub">వేడుకల కార్యక్రమం · వివాహ వేడుక</p>
     <div class="gold-line"></div>
   </div>
+  <div class="events-timeline" style="margin-bottom:52px">
+    <div class="ev-card reveal" style="transition-delay:.05s">
+      <div class="ev-badge"><span class="ev-day">14</span><span class="ev-mon">Aug</span></div>
+      <div>
+        <div class="ev-icon">💛</div>
+        <div class="ev-name">Haldi Ceremony</div>
+        <div class="ev-name-tel">పసుపు కార్యక్రమం</div>
+        <div class="ev-time">09:30 AM</div>
+        <div class="ev-dress">👗 Yellow Dress</div>
+      </div>
+    </div>
+    <div class="ev-card reveal" style="transition-delay:.12s">
+      <div class="ev-badge"><span class="ev-day">15</span><span class="ev-mon">Aug</span></div>
+      <div>
+        <div class="ev-icon">🌸</div>
+        <div class="ev-name">Pellikuthuru</div>
+        <div class="ev-name-tel">పెళ్ళికూతురు</div>
+        <div class="ev-time">10:30 AM</div>
+        <div class="ev-dress">👘 Traditional Wear</div>
+      </div>
+    </div>
+    <div class="ev-card reveal" style="transition-delay:.19s">
+      <div class="ev-badge ev-badge-wed"><span class="ev-day">16</span><span class="ev-mon">Aug</span></div>
+      <div>
+        <div class="ev-icon">💍</div>
+        <div class="ev-name">Wedding Ceremony</div>
+        <div class="ev-name-tel">వివాహ మహోత్సవం</div>
+        <div class="ev-time">Muhurtham · 12:24 AM</div>
+        <div class="ev-dress">🥻 Traditional / Indo-Western</div>
+      </div>
+    </div>
+    <div class="ev-card reveal" style="transition-delay:.26s">
+      <div class="ev-badge ev-badge-wed"><span class="ev-day">16</span><span class="ev-mon">Aug</span></div>
+      <div>
+        <div class="ev-icon">🎊</div>
+        <div class="ev-name">Reception</div>
+        <div class="ev-name-tel">స్వాగత సత్కారం</div>
+        <div class="ev-time">12:30 PM</div>
+        <div class="ev-dress">✨ Celebrate in Style</div>
+      </div>
+    </div>
+  </div>
+  <p class="reveal" style="font-family:'Cinzel Decorative',serif;font-size:.72rem;color:var(--gold);text-align:center;letter-spacing:3px;margin-bottom:28px;text-transform:uppercase;transition-delay:.22s">— Ceremony Details —</p>
   <div class="ceremony-cards">
     <div class="cer-card reveal" style="transition-delay:.05s"><span class="cer-icon">📅</span><div class="cer-label">Date</div><div class="cer-val">16 August 2026</div><div class="cer-sub">Sunday</div></div>
     <div class="cer-card reveal" style="transition-delay:.1s"><span class="cer-icon">🕐</span><div class="cer-label">Muhurtham</div><div class="cer-val">12:24 AM</div><div class="cer-sub">ముహూర్తం</div></div>
@@ -768,7 +820,7 @@ function revealMain(){
   initHeroPetals();
   initNav();
   initScrollReveal();
-  initCurtainReveal();
+  initDiyaReveal();
   initGalleryBook();
   initCalBtn();
   initLoveNote();
@@ -814,28 +866,24 @@ function initScrollReveal(){
 }
 
 /* ── lotus bloom date reveal ── */
-function initCurtainReveal(){
-  const wrap=$('lotus-wrap'),hint=$('lotus-hint'),info=$('date-info-wrap'),drCd=$('dr-cd');
+function initDiyaReveal(){
+  const wrap=$('diya-wrap'),hint=$('diya-hint'),info=$('date-info-wrap'),drCd=$('dr-cd');
   if(!wrap)return;
-  let bloomed=false;
-  function bloom(){
-    if(bloomed)return;bloomed=true;
-    wrap.classList.add('bloomed');
+  let lit=false;
+  function light(){
+    if(lit)return;lit=true;
+    wrap.classList.add('lit');
     if(hint)hint.style.opacity='0';
-    // sparkle burst
-    const stage=$('lotus-stage')||wrap;
-    const rect=($('lotus-center')||wrap).getBoundingClientRect();
-    const sr=stage.getBoundingClientRect();
-    const cx=rect.left-sr.left+rect.width/2;
-    const cy=rect.top-sr.top+rect.height/2;
-    for(let i=0;i<18;i++){
+    // sparkle burst from diya center
+    const cx=wrap.offsetWidth/2,cy=wrap.offsetHeight/2;
+    for(let i=0;i<20;i++){
       const sp=document.createElement('div');
       sp.className='lspark';
-      const ang=(i/18)*Math.PI*2;
-      const dist=50+Math.random()*45;
-      sp.style.cssText=`left:${cx}px;top:${cy}px;--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;animation-delay:${Math.random()*0.12}s;background:${Math.random()>.5?'#D4AF37':'#F0D47A'}`;
-      stage.appendChild(sp);
-      setTimeout(()=>sp.remove(),1100);
+      const ang=(i/20)*Math.PI*2;
+      const dist=55+Math.random()*50;
+      sp.style.cssText=`left:${cx}px;top:${cy}px;--tx:${Math.cos(ang)*dist}px;--ty:${Math.sin(ang)*dist}px;animation-delay:${Math.random()*0.14}s;background:${Math.random()>.5?'#D4AF37':'#FF8C00'}`;
+      wrap.appendChild(sp);
+      setTimeout(()=>sp.remove(),1200);
     }
     setTimeout(()=>{
       if(hint)hint.style.display='none';
@@ -845,8 +893,8 @@ function initCurtainReveal(){
       startCountdown();
     },920);
   }
-  wrap.addEventListener('click',bloom);
-  wrap.addEventListener('touchend',e=>{e.preventDefault();bloom()},{passive:false});
+  wrap.addEventListener('click',light);
+  wrap.addEventListener('touchend',e=>{e.preventDefault();light()},{passive:false});
 }
 function startMangalsutra(){
   if(!window.gsap)return;
@@ -858,8 +906,8 @@ function startMangalsutra(){
   gsap.to('#mthali',{scale:1,duration:.4,delay:3.3});
 }
 function quickRevealDate(){
-  const w=$('lotus-wrap');if(w)w.classList.add('bloomed');
-  const h=$('lotus-hint');if(h)h.style.display='none';
+  const w=$('diya-wrap');if(w)w.classList.add('lit');
+  const h=$('diya-hint');if(h)h.style.display='none';
   const i=$('date-info-wrap');if(i)i.classList.add('revealed');
   qq('#mt1,#mt2').forEach(el=>el.style.strokeDashoffset='0');
   qq('.mb,.mgb').forEach(el=>el.style.opacity='1');
