@@ -136,7 +136,7 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,22,40,.82) 0%,rgba(6,12,34,.85) 55%,rgba(4,8,22,.9) 100%)}
 #hero-petals{position:absolute;inset:0;pointer-events:none;z-index:1}
 .temple-sil{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:110%;max-width:1400px;opacity:.08;pointer-events:none;z-index:1}
-.hero-content{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.hero-content{position:relative;z-index:2;max-width:760px;margin:0 auto;animation:heroFloat 3.6s ease-in-out 2.8s infinite}
 .hero-badge{display:inline-block;border:1px solid rgba(212,175,55,.35);border-radius:30px;padding:5px 18px;margin-bottom:18px;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);opacity:0;animation:hIn .8s ease .4s forwards}
 .hero-tel{font-family:'Noto Sans Telugu',serif;font-size:clamp(1.7rem,4.8vw,3.2rem);color:var(--gold);line-height:1.35;margin-bottom:14px;opacity:0;animation:hIn .9s ease .6s forwards;text-shadow:0 0 40px rgba(212,175,55,.45)}
 .hero-div{width:160px;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:14px auto;opacity:0;animation:hIn .6s ease .82s forwards}
@@ -145,11 +145,11 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
 .h-heart{color:var(--sky);display:inline-block;animation:hb 1.5s ease infinite}
 .hero-pill{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:8px 20px;border-radius:50px;border:1px solid rgba(212,175,55,.35);font-family:'Playfair Display',serif;font-size:.88rem;color:var(--gold);opacity:0;animation:hIn .7s ease 1.25s forwards;background:rgba(212,175,55,.07)}
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);opacity:0;animation:hIn .6s ease 1.7s forwards;display:flex;flex-direction:column;align-items:center;gap:1px;user-select:none}
-.sh-arr{display:block;font-size:1.05rem;color:var(--gold);line-height:1.1;opacity:0;animation:shFloat 1.8s ease-in-out infinite}
+.sh-arr{display:block;font-size:1.05rem;color:var(--gold);line-height:1.1;animation:heroFloat 3.6s ease-in-out infinite}
 .sh-arr:nth-child(1){animation-delay:0s}
-.sh-arr:nth-child(2){animation-delay:.26s}
-.sh-arr:nth-child(3){animation-delay:.52s}
-@keyframes shFloat{0%{opacity:0;transform:translateY(-6px)}30%{opacity:.9}70%{opacity:.85}100%{opacity:0;transform:translateY(9px)}}
+.sh-arr:nth-child(2){animation-delay:.9s}
+.sh-arr:nth-child(3){animation-delay:1.8s}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
 @keyframes hIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
 /* ═══════════════════════════════════════════
@@ -833,7 +833,6 @@ function revealMain(){
   initMusic();
   startCountdown();
   initFireworks();
-  if(localStorage.getItem('dateRev')==='1')quickRevealDate();
 }
 
 /* ── hero petals (low-count, stops when off-screen) ── */
@@ -896,7 +895,7 @@ function initCurtainReveal(){
     if((startY-y)/stageH()>=.44){
       scroll.style.transform='scaleY(0)';done=true;
       if(tWrap)tWrap.style.top='-60px';
-      setTimeout(()=>{scroll.style.display='none';if(tWrap)tWrap.style.display='none';startMangalsutra();drCd.classList.add('show');startCountdown();localStorage.setItem('dateRev','1')},580);
+      setTimeout(()=>{scroll.style.display='none';if(tWrap)tWrap.style.display='none';startMangalsutra();drCd.classList.add('show');startCountdown();},580);
     }else{
       scroll.style.transform='scaleY(1)';
       if(tWrap)tWrap.style.top=(stageH()-10)+'px';
