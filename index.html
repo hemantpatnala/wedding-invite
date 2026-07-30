@@ -196,28 +196,31 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
 #date-reveal .section-title h2{color:var(--gold)}
 #date-reveal .tel-sub{color:var(--sky)}
 .dr-sub{font-family:'Dancing Script',cursive;font-size:.95rem;color:rgba(212,175,55,.65);margin-top:5px}
-.curtain-stage{position:relative;max-width:480px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.date-content{padding:48px 28px 44px;text-align:center;background:linear-gradient(160deg,#0D1B4B 0%,#0A1020 100%)}
-/* parchment scroll cover over the date */
-#dr-scroll{position:absolute;inset:0;z-index:10;transform-origin:top center;will-change:transform;cursor:grab;overflow:hidden}
-.drs-top-roller{position:absolute;top:0;left:0;right:0;height:20px;z-index:3;border-radius:10px 10px 0 0;background:linear-gradient(180deg,var(--lgold) 0%,var(--gold) 22%,#6B4800 50%,var(--gold) 78%,var(--lgold) 100%);box-shadow:0 3px 10px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.18)}
-.drs-top-roller::before,.drs-top-roller::after{content:'';position:absolute;top:2px;bottom:2px;width:13px;border-radius:6px;background:linear-gradient(180deg,var(--lgold),var(--dgold))}
-.drs-top-roller::before{left:-9px}.drs-top-roller::after{right:-9px}
-.drs-parchment{position:absolute;top:20px;left:0;right:0;bottom:20px;background:linear-gradient(180deg,#FDF8E8 0%,#FAF0CE 50%,#FDF8E8 100%);border-left:2px solid rgba(212,175,55,.4);border-right:2px solid rgba(212,175,55,.4)}
-.drs-parchment::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(212,175,55,.045) 0,rgba(212,175,55,.045) 1px,transparent 1px,transparent 26px)}
-.drs-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:14px}
-.drs-om{font-size:2rem;color:var(--gold);filter:drop-shadow(0 0 8px rgba(212,175,55,.4))}
-.drs-stars{letter-spacing:8px;color:var(--gold);font-size:.7rem;opacity:.7}
-.drs-tel{font-family:'Noto Sans Telugu',serif;font-size:.88rem;color:var(--mid);line-height:1.55}
-.drs-en{font-family:'Dancing Script',cursive;font-size:.95rem;color:var(--dgold);font-style:italic;line-height:1.5}
-.drs-bot-roller{position:absolute;bottom:0;left:0;right:0;height:20px;z-index:3;border-radius:0 0 10px 10px;background:linear-gradient(180deg,var(--lgold) 0%,var(--gold) 22%,#6B4800 50%,var(--gold) 78%,var(--lgold) 100%);box-shadow:0 5px 16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18)}
-.drs-bot-roller::before,.drs-bot-roller::after{content:'';position:absolute;top:2px;bottom:2px;width:13px;border-radius:6px;background:linear-gradient(180deg,var(--lgold),var(--dgold))}
-.drs-bot-roller::before{left:-9px}.drs-bot-roller::after{right:-9px}
-/* tassel hangs outside the scaled scroll element */
-#drs-tassel-wrap{position:absolute;left:50%;transform:translateX(-50%);z-index:13;display:flex;flex-direction:column;align-items:center;pointer-events:none;transition:top .55s cubic-bezier(.4,0,.2,1)}
-.drs-thread{width:2px;height:24px;background:linear-gradient(180deg,var(--gold),var(--lgold));border-radius:1px}
-.drs-ball{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 38% 32%,var(--lgold),var(--dgold));border:1.5px solid var(--gold);box-shadow:0 2px 12px rgba(212,175,55,.55);animation:tbounce 2s ease-in-out infinite}
-.drs-pull-lbl{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(212,175,55,.7);margin-top:5px;animation:tapPulse 2s ease infinite;white-space:nowrap}
+.lotus-stage{display:flex;flex-direction:column;align-items:center;max-width:480px;margin:0 auto}
+.lotus-wrap{position:relative;width:min(268px,70vw);height:min(268px,70vw);cursor:pointer;margin:0 auto;flex-shrink:0;transition:transform .15s}
+.lotus-wrap:active{transform:scale(.96)}
+/* Petal base: transform-origin at bottom = lotus center */
+.petal{position:absolute;top:calc(50% - 105px);left:calc(50% - 27px);width:54px;height:105px;border-radius:50% 50% 42% 42%/55% 55% 45% 45%;transform-origin:50% 100%;transition:transform .65s cubic-bezier(.34,1.3,.64,1);will-change:transform}
+.op{background:linear-gradient(165deg,#FFD6E8 0%,#FF8FAB 55%,#C2527F 100%);filter:drop-shadow(0 3px 8px rgba(194,82,127,.18))}
+.ip{width:38px;height:72px;top:calc(50% - 72px);left:calc(50% - 19px);background:linear-gradient(165deg,#FFF5F9 0%,#FFCCE0 55%,#FFD07A 100%);z-index:2}
+/* Closed bud */
+.p1{transform:rotate(0deg) scaleY(.06)}.p2{transform:rotate(45deg) scaleY(.06)}.p3{transform:rotate(90deg) scaleY(.06)}.p4{transform:rotate(135deg) scaleY(.06)}.p5{transform:rotate(180deg) scaleY(.06)}.p6{transform:rotate(225deg) scaleY(.06)}.p7{transform:rotate(270deg) scaleY(.06)}.p8{transform:rotate(315deg) scaleY(.06)}
+.ip1{transform:rotate(22.5deg) scaleY(.05)}.ip2{transform:rotate(112.5deg) scaleY(.05)}.ip3{transform:rotate(202.5deg) scaleY(.05)}.ip4{transform:rotate(292.5deg) scaleY(.05)}
+/* Bloomed — petals fan out with stagger */
+.bloomed .p1{transform:rotate(0deg) scaleY(1);transition-delay:.00s}.bloomed .p2{transform:rotate(45deg) scaleY(1);transition-delay:.06s}.bloomed .p3{transform:rotate(90deg) scaleY(1);transition-delay:.12s}.bloomed .p4{transform:rotate(135deg) scaleY(1);transition-delay:.18s}.bloomed .p5{transform:rotate(180deg) scaleY(1);transition-delay:.24s}.bloomed .p6{transform:rotate(225deg) scaleY(1);transition-delay:.30s}.bloomed .p7{transform:rotate(270deg) scaleY(1);transition-delay:.36s}.bloomed .p8{transform:rotate(315deg) scaleY(1);transition-delay:.42s}
+.bloomed .ip1{transform:rotate(22.5deg) scaleY(1);transition-delay:.34s}.bloomed .ip2{transform:rotate(112.5deg) scaleY(1);transition-delay:.40s}.bloomed .ip3{transform:rotate(202.5deg) scaleY(1);transition-delay:.46s}.bloomed .ip4{transform:rotate(292.5deg) scaleY(1);transition-delay:.52s}
+/* Golden center disc */
+.lotus-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;z-index:10;background:radial-gradient(circle at 40% 34%,#FFF9E0,#D4AF37 68%,#B8922A);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(212,175,55,.2),0 0 22px rgba(212,175,55,.35)}
+.lotus-wrap:not(.bloomed) .lotus-center{animation:budPulse 2.4s ease-in-out infinite}
+@keyframes budPulse{0%,100%{box-shadow:0 0 0 5px rgba(212,175,55,.12),0 0 12px rgba(212,175,55,.18)}50%{box-shadow:0 0 0 16px rgba(212,175,55,.22),0 0 36px rgba(212,175,55,.5)}}
+.lc-om{font-family:serif;font-size:2rem;color:var(--navy);line-height:1;text-shadow:0 1px 3px rgba(0,0,0,.12)}
+.lotus-hint{margin-top:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px;transition:opacity .5s ease}
+.lh-icon{font-size:1.7rem;display:block;animation:hb 1.8s ease-in-out infinite}
+.lh-text{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(212,175,55,.65)}
+.lh-tel{font-family:'Noto Sans Telugu',serif;font-size:.78rem;color:rgba(212,175,55,.45)}
+/* Date text fades up after bloom */
+.date-info-wrap{max-width:480px;margin:32px auto 0;text-align:center;opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease;pointer-events:none}
+.date-info-wrap.revealed{opacity:1;transform:translateY(0);pointer-events:auto}
 .drt-day{font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--sky);margin-bottom:4px;display:block}
 .drt-date{font-family:'Cinzel Decorative',serif;font-size:clamp(4.5rem,14vw,7rem);color:var(--gold);line-height:1;display:block;text-shadow:0 0 50px rgba(212,175,55,.65)}
 .drt-month{font-family:'Playfair Display',serif;font-size:clamp(1rem,3.2vw,1.5rem);color:#fff;letter-spacing:5px;text-transform:uppercase;display:block;margin-top:4px}
@@ -530,10 +533,23 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
     <h2>The Sacred Moment</h2>
     <p class="tel-sub">శుభ ముహూర్తం</p>
     <div class="gold-line"></div>
-    <p class="dr-sub">Pull the scroll upward to reveal the date</p>
+    <p class="dr-sub">Tap the lotus to reveal the auspicious moment</p>
   </div>
-  <div class="curtain-stage reveal" id="curtain-stage" style="transition-delay:.1s">
-    <div class="date-content" id="date-content">
+  <div class="lotus-stage reveal" id="lotus-stage" style="transition-delay:.1s">
+    <div class="lotus-wrap" id="lotus-wrap">
+      <div class="petal op p1"></div><div class="petal op p2"></div><div class="petal op p3"></div><div class="petal op p4"></div>
+      <div class="petal op p5"></div><div class="petal op p6"></div><div class="petal op p7"></div><div class="petal op p8"></div>
+      <div class="petal ip ip1"></div><div class="petal ip ip2"></div><div class="petal ip ip3"></div><div class="petal ip ip4"></div>
+      <div class="lotus-center" id="lotus-center"><span class="lc-om">ओं</span></div>
+    </div>
+    <div class="lotus-hint" id="lotus-hint">
+      <span class="lh-icon">🪷</span>
+      <span class="lh-text">Tap the lotus to reveal</span>
+      <span class="lh-tel">తాకండి · Tap to bloom</span>
+    </div>
+  </div>
+  <div class="date-info-wrap" id="date-info-wrap">
+    <div id="date-content">
       <span class="drt-day">Sunday</span>
       <span class="drt-date">16</span>
       <span class="drt-month">August · 2026</span>
@@ -566,24 +582,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
           </g>
         </svg>
       </div>
-    </div>
-    <div id="dr-scroll">
-      <div class="drs-top-roller"></div>
-      <div class="drs-parchment">
-        <div class="drs-inner">
-          <span class="drs-om">🕉️</span>
-          <span class="drs-stars">✦ &nbsp; ✦ &nbsp; ✦</span>
-          <p class="drs-tel">శుభ ముహూర్తాన్ని<br>తెలుసుకోండి</p>
-          <p class="drs-en">Pull the scroll upward<br>to reveal the date</p>
-          <span class="drs-stars">✦ &nbsp; ✦ &nbsp; ✦</span>
-        </div>
-      </div>
-      <div class="drs-bot-roller"></div>
-    </div>
-    <div id="drs-tassel-wrap">
-      <div class="drs-thread"></div>
-      <div class="drs-ball"></div>
-      <span class="drs-pull-lbl">↑ pull up</span>
     </div>
   </div>
   <div class="dr-cd" id="dr-cd">
@@ -871,43 +869,25 @@ function initScrollReveal(){
   qq('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
 }
 
-/* ── date scroll pull reveal ── */
+/* ── lotus bloom date reveal ── */
 function initCurtainReveal(){
-  const scroll=$('dr-scroll'),stage=$('curtain-stage'),tWrap=$('drs-tassel-wrap'),drCd=$('dr-cd');
-  if(!scroll||!stage)return;
-  let startY=0,drag=false,done=false;
-  function stageH(){return stage.offsetHeight||320}
-  function setScale(s){
-    s=Math.max(0,Math.min(1,s));
-    scroll.style.transform=`scaleY(${s})`;
-    if(tWrap)tWrap.style.top=(stageH()*s-10)+'px';
+  const wrap=$('lotus-wrap'),hint=$('lotus-hint'),info=$('date-info-wrap'),drCd=$('dr-cd');
+  if(!wrap)return;
+  let bloomed=false;
+  function bloom(){
+    if(bloomed)return;bloomed=true;
+    wrap.classList.add('bloomed');
+    if(hint)hint.style.opacity='0';
+    setTimeout(()=>{
+      if(hint)hint.style.display='none';
+      if(info)info.classList.add('revealed');
+      startMangalsutra();
+      drCd.classList.add('show');
+      startCountdown();
+    },920);
   }
-  function onStart(y){if(done)return;drag=true;startY=y;scroll.style.transition='none';if(tWrap)tWrap.style.transition='none'}
-  function onMove(y){
-    if(!drag||done)return;
-    setScale(1-Math.max(0,startY-y)/stageH());
-  }
-  function onEnd(y){
-    if(!drag||done)return;drag=false;
-    const trans='transform .55s cubic-bezier(.4,0,.2,1)';
-    scroll.style.transition=trans;
-    if(tWrap)tWrap.style.transition='top .55s cubic-bezier(.4,0,.2,1)';
-    if((startY-y)/stageH()>=.44){
-      scroll.style.transform='scaleY(0)';done=true;
-      if(tWrap)tWrap.style.top='-60px';
-      setTimeout(()=>{scroll.style.display='none';if(tWrap)tWrap.style.display='none';startMangalsutra();drCd.classList.add('show');startCountdown();},580);
-    }else{
-      scroll.style.transform='scaleY(1)';
-      if(tWrap)tWrap.style.top=(stageH()-10)+'px';
-    }
-  }
-  if(tWrap)tWrap.style.top=(stageH()-10)+'px';
-  stage.addEventListener('touchstart',e=>onStart(e.touches[0].clientY),{passive:true});
-  stage.addEventListener('touchmove', e=>onMove(e.touches[0].clientY),{passive:true});
-  stage.addEventListener('touchend',  e=>onEnd(e.changedTouches[0].clientY),{passive:true});
-  stage.addEventListener('mousedown', e=>onStart(e.clientY));
-  document.addEventListener('mousemove',e=>{if(drag)onMove(e.clientY)});
-  document.addEventListener('mouseup',  e=>{if(drag)onEnd(e.clientY)});
+  wrap.addEventListener('click',bloom);
+  wrap.addEventListener('touchend',e=>{e.preventDefault();bloom()},{passive:false});
 }
 function startMangalsutra(){
   if(!window.gsap)return;
@@ -919,8 +899,9 @@ function startMangalsutra(){
   gsap.to('#mthali',{scale:1,duration:.4,delay:3.3});
 }
 function quickRevealDate(){
-  const c=$('dr-scroll');if(c)c.style.display='none';
-  const t=$('drs-tassel-wrap');if(t)t.style.display='none';
+  const w=$('lotus-wrap');if(w)w.classList.add('bloomed');
+  const h=$('lotus-hint');if(h)h.style.display='none';
+  const i=$('date-info-wrap');if(i)i.classList.add('revealed');
   qq('#mt1,#mt2').forEach(el=>el.style.strokeDashoffset='0');
   qq('.mb,.mgb').forEach(el=>el.style.opacity='1');
   const th=$('mthali');if(th)th.style.opacity='1';
