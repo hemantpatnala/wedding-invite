@@ -5,6 +5,7 @@ window.WEDDING_CONFIG = {
     "KCP01280 copy.jpg",
     "KCP01359 copy.jpg",
     "KCP02284 copy.jpg",
+    "KCP01264 copy.jpg",
     "KCP02291 copy.jpg",
     "KCP02311 copy.jpg"
   ],
