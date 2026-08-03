@@ -40,6 +40,60 @@ img{max-width:100%;display:block}
 .scroll-enter-anim{animation:scrollDrop .85s cubic-bezier(.2,1.3,.5,1) forwards}
 
 /* ═══════════════════════════════════════════
+   TEMPLE DOOR INTRO
+═══════════════════════════════════════════ */
+#door-screen{
+  position:fixed;inset:0;z-index:9999;background:var(--deep);
+  display:flex;perspective:1800px;overflow:hidden;transition:opacity .7s ease;
+}
+#door-screen.hide{opacity:0;pointer-events:none}
+.door-glow{
+  position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);
+  background:radial-gradient(ellipse at center,rgba(255,225,150,.95),rgba(255,225,150,0) 72%);
+  box-shadow:0 0 90px 34px rgba(255,210,120,.55);z-index:1;opacity:0;transition:opacity .6s ease .2s;
+}
+#door-screen.opening .door-glow{opacity:1}
+.door{position:relative;width:50%;height:100%;z-index:2;transform-style:preserve-3d;
+  transition:transform 2.3s cubic-bezier(.65,-.1,.28,1.05);
+}
+.door-left{transform-origin:left center}
+.door-right{transform-origin:right center}
+#door-screen.creak .door-left{animation:doorCreakL .4s ease-in-out}
+#door-screen.creak .door-right{animation:doorCreakR .4s ease-in-out}
+@keyframes doorCreakL{0%,100%{transform:rotateY(0deg)}50%{transform:rotateY(-5deg)}}
+@keyframes doorCreakR{0%,100%{transform:rotateY(0deg)}50%{transform:rotateY(5deg)}}
+#door-screen.opening .door-left{transform:rotateY(-112deg)}
+#door-screen.opening .door-right{transform:rotateY(112deg)}
+.door-panel{
+  position:absolute;inset:0;border:3px solid var(--gold);
+  background:
+    repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0 2px,transparent 2px 34px),
+    linear-gradient(135deg,#3A2210,#5C3818 35%,#3A2210 65%,#241407);
+  box-shadow:inset 0 0 70px rgba(0,0,0,.65),inset 0 0 0 10px rgba(212,175,55,.5);
+}
+.door-left .door-panel{border-right:5px solid rgba(212,175,55,.85)}
+.door-right .door-panel{border-left:5px solid rgba(212,175,55,.85)}
+.door-carve{position:absolute;inset:26px;border:2px solid rgba(212,175,55,.55);border-radius:10px;
+  box-shadow:inset 0 0 0 8px rgba(0,0,0,.25),inset 0 0 30px rgba(212,175,55,.12);
+}
+.door-carve::before{content:'';position:absolute;inset:22px;border:1px solid rgba(212,175,55,.35);border-radius:6px}
+.door-handle{position:absolute;top:50%;width:16px;height:74px;border-radius:8px;transform:translateY(-50%);
+  background:linear-gradient(180deg,var(--lgold),var(--dgold));box-shadow:0 0 12px rgba(212,175,55,.75);
+}
+.door-left .door-handle{right:26px}
+.door-right .door-handle{left:26px}
+.door-emblem{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;
+  font-size:2.6rem;color:var(--gold);text-shadow:0 0 22px rgba(212,175,55,.85);
+  transition:opacity .5s ease,transform .7s ease;
+}
+#door-screen.opening .door-emblem{opacity:0;transform:translate(-50%,-50%) scale(1.5)}
+.door-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:3;
+  font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(212,175,55,.6);
+  transition:opacity .3s ease;
+}
+#door-screen.opening .door-hint{opacity:0}
+
+/* ═══════════════════════════════════════════
    PAPYRUS SCROLL OPENING
 ═══════════════════════════════════════════ */
 /* Lotus sparkles */
@@ -225,6 +279,8 @@ nav.scrolled{background:rgba(10,22,40,.95);backdrop-filter:blur(12px);padding:8p
 .ev-card:hover{background:rgba(212,175,55,.07);border-color:var(--gold);transform:translateY(-4px)}
 .ev-badge{background:linear-gradient(135deg,var(--royal),var(--mid));border-radius:12px;padding:12px 14px;text-align:center;flex-shrink:0;min-width:54px;border:1px solid rgba(212,175,55,.3)}
 .ev-badge-wed{background:linear-gradient(135deg,#6B0000,#A01020);border-color:rgba(212,175,55,.5)}
+.ev-badge-haldi{background:linear-gradient(135deg,#E8B400,#F5D547);border-color:rgba(212,175,55,.6)}
+.ev-badge-haldi .ev-day,.ev-badge-haldi .ev-mon{color:#3A2400}
 .ev-day{display:block;font-family:'Cinzel Decorative',serif;font-size:1.45rem;color:var(--gold);line-height:1}
 .ev-mon{display:block;font-size:.6rem;letter-spacing:2px;color:rgba(255,255,255,.6);margin-top:4px;text-transform:uppercase}
 .ev-icon{font-size:1.7rem;margin-bottom:5px}
@@ -380,6 +436,15 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
 </style>
 </head>
 <body>
+
+<!-- TEMPLE DOORS INTRO -->
+<div id="door-screen">
+  <div class="door-glow"></div>
+  <div class="door door-left"><div class="door-panel"><div class="door-carve"></div><div class="door-handle"></div></div></div>
+  <div class="door door-right"><div class="door-panel"><div class="door-carve"></div><div class="door-handle"></div></div></div>
+  <div class="door-emblem">🕉️</div>
+  <p class="door-hint">✦ &nbsp; The doors open &nbsp; ✦</p>
+</div>
 
 <!-- PAPYRUS SCROLL -->
 <div id="scroll-screen">
@@ -569,10 +634,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
   </div>
   <div class="events-timeline" style="margin-bottom:52px">
     <div class="ev-card reveal" style="transition-delay:.05s">
-      <div class="ev-badge"><span class="ev-day">14</span><span class="ev-mon">Aug</span></div>
+      <div class="ev-badge ev-badge-haldi"><span class="ev-day">14</span><span class="ev-mon">Aug</span></div>
       <div>
         <div class="ev-icon">💛</div>
-        <div class="ev-name">Haldi Ceremony</div>
+        <div class="ev-name" style="color:#F5D547">Haldi Ceremony</div>
         <div class="ev-name-tel">పసుపు కార్యక్రమం</div>
         <div class="ev-time">09:30 AM</div>
         <div class="ev-dress">👗 Yellow Dress</div>
@@ -746,6 +811,14 @@ function initStars(id,n){
 }
 
 /* ── loading ── */
+/* ── temple door intro ── */
+function showDoors(){
+  const ds=$('door-screen');
+  setTimeout(()=>{ds.classList.add('creak')},600);
+  setTimeout(()=>{ds.classList.remove('creak');ds.classList.add('opening')},1050);
+  setTimeout(()=>{ds.classList.add('hide')},3150);
+  setTimeout(()=>{ds.style.display='none';showScroll()},3850);
+}
 /* ── papyrus scroll ── */
 function showScroll(){
   const ss=$('scroll-screen');
@@ -757,7 +830,7 @@ function showScroll(){
   wrap.classList.add('scroll-enter-anim');
   // start music on first scroll interaction
   wrap.addEventListener('touchstart',()=>{
-    if(MUSIC&&!musicStarted){const a=$('bg-audio');a.src=MUSIC;a.play().then(()=>{musicOn=true;musicStarted=true;$('micon').textContent='🎵';$('mlbl').textContent='music';$('music-fab').classList.add('playing')}).catch(()=>{})}
+    if(MUSIC&&!musicStarted){const a=$('bg-audio');a.src=MUSIC;a.currentTime=0;a.play().then(()=>{musicOn=true;musicStarted=true;$('micon').textContent='🎵';$('mlbl').textContent='music';$('music-fab').classList.add('playing')}).catch(()=>{})}
   },{once:true,passive:true});
   const FULL=Math.min(400,Math.floor(window.innerHeight*.58));
   let startY=0,drag=false,prog=0,done=false;
@@ -1031,7 +1104,7 @@ function initMusic(){
   if(!MUSIC){fab.style.opacity='.4';return}
   audio.src=MUSIC;audio.volume=.42;
   function toggle(){
-    if(!musicStarted){musicStarted=true;audio.play().then(()=>{musicOn=true;update()}).catch(()=>{})}
+    if(!musicStarted){musicStarted=true;audio.currentTime=0;audio.play().then(()=>{musicOn=true;update()}).catch(()=>{})}
     else if(musicOn){audio.pause();musicOn=false;update()}
     else{audio.play();musicOn=true;update()}
   }
@@ -1042,7 +1115,7 @@ function initMusic(){
   document.addEventListener('click',()=>{if(MUSIC&&!musicStarted)toggle()},{once:true,passive:true});
 }
 
-window.addEventListener('DOMContentLoaded',()=>{showScroll();});
+window.addEventListener('DOMContentLoaded',()=>{showDoors();});
 })();
 </script>
 </body>
