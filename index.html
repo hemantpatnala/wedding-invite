@@ -422,6 +422,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.48);text-align:center;padd
   .btn{justify-content:center}
   .couple-wrap{gap:18px}
   .char-card{min-width:0;width:100%}
+  #scroll-screen{justify-content:flex-start;padding-top:7vh}
 }
 @media(max-width:480px){
   .section{padding:42px 12px}
@@ -835,7 +836,7 @@ function showScroll(){
       a.play().then(()=>{a.currentTime=0;musicOn=true;musicStarted=true;$('micon').textContent='🎵';$('mlbl').textContent='music';$('music-fab').classList.add('playing')}).catch(()=>{})
     }
   },{once:true,passive:true});
-  const FULL=Math.min(400,Math.floor(window.innerHeight*.58));
+  const FULL=Math.min(400,Math.floor(window.innerHeight*(window.innerWidth<=768?.5:.58)));
   let startY=0,drag=false,prog=0,done=false;
 
   function setProg(p){
