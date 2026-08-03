@@ -830,7 +830,10 @@ function showScroll(){
   wrap.classList.add('scroll-enter-anim');
   // start music on first scroll interaction
   wrap.addEventListener('touchstart',()=>{
-    if(MUSIC&&!musicStarted){const a=$('bg-audio');a.src=MUSIC;a.currentTime=0;a.play().then(()=>{musicOn=true;musicStarted=true;$('micon').textContent='🎵';$('mlbl').textContent='music';$('music-fab').classList.add('playing')}).catch(()=>{})}
+    if(MUSIC&&!musicStarted){
+      const a=$('bg-audio');a.src=MUSIC;a.currentTime=0;
+      a.play().then(()=>{a.currentTime=0;musicOn=true;musicStarted=true;$('micon').textContent='🎵';$('mlbl').textContent='music';$('music-fab').classList.add('playing')}).catch(()=>{})
+    }
   },{once:true,passive:true});
   const FULL=Math.min(400,Math.floor(window.innerHeight*.58));
   let startY=0,drag=false,prog=0,done=false;
@@ -1102,9 +1105,10 @@ function initLoveNote(){
 function initMusic(){
   const fab=$('music-fab'),audio=$('bg-audio');
   if(!MUSIC){fab.style.opacity='.4';return}
-  audio.src=MUSIC;audio.volume=.42;
+  if(!musicStarted)audio.src=MUSIC; // avoid restarting a track already begun via the scroll gesture
+  audio.volume=.42;
   function toggle(){
-    if(!musicStarted){musicStarted=true;audio.currentTime=0;audio.play().then(()=>{musicOn=true;update()}).catch(()=>{})}
+    if(!musicStarted){musicStarted=true;audio.currentTime=0;audio.play().then(()=>{audio.currentTime=0;musicOn=true;update()}).catch(()=>{})}
     else if(musicOn){audio.pause();musicOn=false;update()}
     else{audio.play();musicOn=true;update()}
   }
